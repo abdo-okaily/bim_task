@@ -2,19 +2,27 @@
 
 namespace App\Models;
 
+use App\Traits\AdminHasRole;
+use App\Models\UserVendorRate;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\File;
+use App\Models\VendorWarehouseRequest;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\WalletTransactionHistory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, AdminHasRole;
 
     /**
      * The attributes that are mass assignable.

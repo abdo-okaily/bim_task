@@ -47,9 +47,6 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.transactions.index') }}" class="nav-link">@lang('admin.transactions_list')</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.carts.index') }}" class="nav-link">@lang('admin.carts_list')</a>
-                            </li>
                         </ul>
                     </div>
                 </li><li class="nav-item">
